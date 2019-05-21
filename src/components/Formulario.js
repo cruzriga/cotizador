@@ -2,15 +2,26 @@ import React,{Component} from 'react'
 import { create } from 'istanbul-reports';
 
 class Formulario extends Component {
-    
-    marcaRef = React.createRef();
-    yearRef = React.createRef();
-    planBasicoRef = React.createRef();
-    planCompletoRef = React.createRef();
+    constructor(props){
+        super(props);
+        this.marcaRef = React.createRef();
+        this.yearRef = React.createRef();
+        this.planBasicoRef = React.createRef();
+        this.planCompletoRef = React.createRef();
+    }
 
-    cotizarSeguro(e){
+    cotizarSeguro = (e) =>{
         e.preventDefault();
-      // refs sirve para leer los valores de los inputs de un formulario
+      // refs sirve para leer los valores de los inputs de un
+      const plan = this.planBasicoRef.current.checked ? 'basico' : 'commpleto';
+      const infoAuto = {
+          marca : this.marcaRef.current.value,
+          year  : this.yearRef.current.value,
+          plan  : plan
+      }
+      this.props.cotizarSeguro(infoAuto);
+     // e.currentTarget.reset();
+
     }
 
     render(){
@@ -43,7 +54,7 @@ class Formulario extends Component {
                 </div>
                 <div className="campo">
                     <label>Plan:</label>
-                    <input type="radio" ref={this.planBasicoRef}  name="plan" value="basico"/> Básico
+                    <input type="radio" ref={this.planBasicoRef}  name="plan" value="basico" defaultChecked = "true" /> Básico
                     <input type="radio" ref={this.planCompletoRef}  name="plan" value="completo"/> Completo
                 </div>
 
