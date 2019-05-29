@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 
-class Resumen extends Component{
+export default class Resumen extends Component{
     
     mostrarResumen = ()=>{
         const {marca, year, plan} = this.props.datos;
@@ -22,5 +22,3 @@ class Resumen extends Component{
             );
         }
 }
-
-export default Resumen;

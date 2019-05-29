@@ -17,7 +17,6 @@ export default class App extends Component {
     resultado = calcularMarca(marca) * resultado;
     let incremento  = obtenerPlan(plan);
     resultado  = parseFloat(incremento * resultado).toFixed(2);
-    console.log(`resultado es = a : ${resultado} - ${incremento}`);
     const datosAuto = {
       marca :  marca,
       year  :  year,
